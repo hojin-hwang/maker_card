@@ -24,10 +24,13 @@ const Maker = ({FileInput, authService, cardRepository}) => {
         {
             return;
         }
+        /*
         const stopSync = cardRepository.syncCards(userId, cards =>{
             setCards(cards);
         })
         return () => stopSync();
+        */
+       return null;
 
     }, [userId,cardRepository]);
 
@@ -44,7 +47,7 @@ const Maker = ({FileInput, authService, cardRepository}) => {
     },[authService, userId, history]);
 
 
-    const createOrupdateCard = card =>{
+    const createOrupdateCard = card  =>{
         //Object의 특징을 잘 이용해보자
         /* 기존방식
         const updated = {...cards};
@@ -75,10 +78,12 @@ const Maker = ({FileInput, authService, cardRepository}) => {
     return(
         <section className={styles.maker}>
             <Header onLogout={onLogout} />
+            
             <div className={styles.container}>
                 <Editor className={styles.editor} FileInput={FileInput} cards={cards} addCard={createOrupdateCard} updateCard={createOrupdateCard} deleteCard={deleteCard} />
                 <Preview className={styles.preview} cards={cards}  />
             </div>
+            
             <Footer />
         </section>
     )
